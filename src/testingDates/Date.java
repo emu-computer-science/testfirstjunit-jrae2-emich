@@ -153,6 +153,11 @@ public class Date
     {
         return year;
     }
+    
+    public Date addOneDay() {
+        System.out.println("Date.addOneDay() is not yet implemented.");
+        return this;
+    }
 
     public String toString( )
     {
