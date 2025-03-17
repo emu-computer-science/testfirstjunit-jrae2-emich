@@ -1,4 +1,4 @@
-package buildToTestLab;
+package testingDates;
 
 import java.util.Scanner;
 
@@ -192,6 +192,7 @@ public class Date
             else
                 System.out.println("Illegal date. Reenter input.");
          }
+        keyboard.close();
     }
 
     private boolean dateOK(int monthInt, int dayInt, int yearInt)
