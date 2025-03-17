@@ -18,8 +18,8 @@ public class DateAddDaysTest {
 
     @Before
     public void prepDates() {
-        myTestDate = new Date("April",1,2025);
-        myTestDayAfter = new Date("April",2,2025);
+        myTestDate = new Date(4,1,2025);
+        myTestDayAfter = new Date(4,2,2025);
         myTestDateLater = new Date("November",29,2025);
         myTestDayAfterLater = new Date("November",30,2025);
         myTestDateMonthBoundary = new Date("April",30,2025);
