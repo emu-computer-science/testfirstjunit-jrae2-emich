@@ -155,7 +155,19 @@ public class Date
     }
     
     public Date addOneDay() {
-        this.day = this.day + 1;
+        int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+        int myMonth = getMonth();
+        int lastDay = daysInMonth[myMonth - 1];
+        if (day < lastDay) {
+            day = day + 1;            
+        } else if (myMonth < 12) {
+            setDay(1);
+            setMonth(myMonth + 1);
+        } else {
+            setDay(1);
+            setMonth(1);
+            setYear(year + 1);
+        }
         return this;
     }
 
@@ -166,8 +178,7 @@ public class Date
 
     public boolean equals(Date otherDate)
     {
-        return ( (month.equals(otherDate.month))
-                  && (day == otherDate.day) && (year == otherDate.year) );
+        return ( (this.month.equals(otherDate.month))  && (this.day == otherDate.day) && (this.year == otherDate.year) );
     }
 
     public boolean precedes(Date otherDate)

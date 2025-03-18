@@ -33,26 +33,26 @@ public class DateAddDaysTest {
     
     @Test
     public void testInMonth() {
-        assertEquals("Testing adding a day in the same month", myTestDayAfter, myTestDate.addOneDay());
+        assertTrue(myTestDate.addOneDay().equals(myTestDayAfter));        
     }
     
     @Test
     public void testInMonthLater() {
-        assertEquals("Testing adding a day later in the same month", myTestDayAfterLater, myTestDateLater.addOneDay());
+        assertTrue(myTestDateLater.addOneDay().equals(myTestDayAfterLater));
     }
     
     @Test
     public void testAcrossMonths() {
-        assertEquals("Testing adding a day in the across months", myTestDayAfterMonthBoundary, myTestDateMonthBoundary.addOneDay());
+        assertTrue(myTestDateMonthBoundary.addOneDay().equals(myTestDayAfterMonthBoundary));
     }
     
     @Test
     public void testAcrossMonthsLater() {
-        assertEquals("Testing adding a day in the across months - second test", myTestDayAfterMonthBoundaryLater, myTestDateMonthBoundaryLater.addOneDay());
+        assertTrue(myTestDateMonthBoundaryLater.addOneDay().equals(myTestDayAfterMonthBoundaryLater));
     }
     
     @Test
     public void testAcrossYears() {
-        assertEquals("Testing adding a day in the across years", myTestDayAfterYearBoundary, myTestDateYearBoundary.addOneDay());
+        assertTrue(myTestDateYearBoundary.addOneDay().equals(myTestDayAfterYearBoundary));
     }
 }
