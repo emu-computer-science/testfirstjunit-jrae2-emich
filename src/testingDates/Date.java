@@ -58,18 +58,18 @@ public class Date
         }
     }
 
-    public void setDate(String monthString, int day, int year)
+    public Date setDate(String monthString, int day, int year)
     {
         if (dateOK(monthString, day, year))
         {
             this.month = monthString;
             this.day = day;
             this.year = year;
+            return this;
         }
         else
         {
-            System.out.println("Fatal Error in setDate(String,int, int)");
-            System.exit(0);
+            return null;
         }
     }
 
@@ -111,6 +111,40 @@ public class Date
     }
 
     public int getMonth( )
+    {
+        if (month.equals("January"))
+            return 1;
+        else if (month.equals("February"))
+            return 2;
+        else if (month.equalsIgnoreCase("March"))
+            return 3;
+        else if (month.equalsIgnoreCase("April"))
+            return 4;
+        else if (month.equalsIgnoreCase("May"))
+            return 5;
+        else if (month.equals("June"))
+            return 6;
+        else if (month.equalsIgnoreCase("July"))
+            return 7;
+        else if (month.equalsIgnoreCase("August"))
+            return 8;
+        else if (month.equalsIgnoreCase("September"))
+            return 9;
+        else if (month.equalsIgnoreCase("October"))
+            return 10;
+        else if (month.equals("November"))
+            return 11;
+        else if (month.equals("December"))
+            return 12;
+        else
+        {
+            System.out.println("Fatal Error in getMonth");
+            System.exit(0);
+            return 0; //Needed to keep the compiler happy
+        }
+    }
+    
+    public int getMonth(String month )
     {
         if (month.equals("January"))
             return 1;
@@ -220,9 +254,19 @@ public class Date
 
     private boolean dateOK(String monthString, int dayInt, int yearInt)
     {
-        return ( monthOK(monthString) &&
-                 (dayInt >= 1) && (dayInt <= 31) &&
-                 (yearInt >= 1000) && (yearInt <= 9999) );
+        if ((yearInt < 1000) || yearInt > 9999) {
+            return false;
+        } else if (! monthOK(monthString)) {
+            return false;
+        } else {
+                int[] daysInMonth = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+                int myMonth = getMonth(monthString);
+                int lastDay = daysInMonth[myMonth - 1];
+                if (dayInt > lastDay) {
+                    return false;
+                }
+        }
+        return true;
     }
 
     private boolean monthOK(String month)
